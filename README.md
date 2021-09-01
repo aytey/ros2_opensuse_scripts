@@ -51,3 +51,4 @@ Choose from above solutions by number or cancel [1/2/c/d/?] (c):
 
 then you need to run the `zypper install` command from `get_deps.sh` manually (and **without** `-y`) and enter `2` at the prompt. We never run Ros2, only build it under VectorCAST, so it is fine if OpenCV is "broken".
 
+This is attempted to be avoided by adding https://download.opensuse.org/repositories/home:dirkmueller:Factory/standard/home:dirkmueller:Factory.repo as an additional repo.
