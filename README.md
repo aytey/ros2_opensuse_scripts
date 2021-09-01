@@ -7,6 +7,9 @@ This repo is a set of scripts for going from a fresh, openSUSE Tumbleweed instal
 To build:
 
 ```bash
+sudo zypper install git
+git clone https://github.com/andrewvaughanj/ros2_opensuse_scripts
+cd ros2_opensuse_scripts
 ./get_deps.sh
 ./steps.sh
 ```
