@@ -18,20 +18,31 @@ cd ros2_opensuse_scripts
 
 ```
 lsb_release  -a
-LSB Version:    n/a
+LSB Version:    core-2.0-noarch:core-3.2-noarch:core-4.0-noarch:core-2.0-x86_64:core-3.2-x86_64:core-4.0-x86_64:desktop-4.0.fake-amd64:desktop-4.0.fake-noarch:graphics-2.0-amd64:graphics-2.0-noarch:graphics-3.2-amd64:graphics-3.2-noarch:graphics-4.0.fake-amd64:graphics-4.0.fake-noarch
 Distributor ID: openSUSE
 Description:    openSUSE Tumbleweed
-Release:        20210820
+Release:        20210830
 Codename:       n/a
 ```
 
 ```
 g++ --version
-g++ (SUSE Linux) 11.1.1 20210721 [revision 076930b9690ac3564638636f6b13bbb6bc608aea]
+g++ (SUSE Linux) 11.2.1 20210816 [revision 056e324ce46a7924b5cf10f61010cf9dd2ca10e9]
 Copyright (C) 2021 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
+
+## Successful build
+
+A successful build will end with something like:
+
+```
+Summary: 330 packages finished [32min 16s]
+  12 packages had stderr output: fastrtps foonathan_memory_vendor google_benchmark_vendor iceoryx_posh mimick_vendor rmw_connextdds_common ros1_bridge rti_connext_dds_cmake_module rviz_common rviz_default_plugins rviz_rendering uncrustify_vendor
+```
+
+(notice: there are no packages that failed to compile or were skipped)
 
 ## Notes
 
