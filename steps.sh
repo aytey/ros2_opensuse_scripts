@@ -6,6 +6,7 @@ venv="colcon_venv"
 colcon_src="colcon_src"
 ros2_src="ros2_src"
 unbuffer="stdbuf -i0 -o0 -e0"
+bison_src="bison"
 
 clean_up()
 {
@@ -73,6 +74,24 @@ patch_ros2()
     git apply ${patches}/yaml_cpp_vendor.patch
     git reset
     cd ${here}
+    cd ${ros2_src}/src/ros2/rcpputils
+    git clean -f -d -x .
+    git checkout .
+    git apply ${patches}/ros2_rcpputils.patch
+    git reset
+    cd ${here}
+    cd ${ros2_src}/src/ros2/realtime_support
+    git clean -f -d -x .
+    git checkout .
+    git apply ${patches}/fa9a5545db8f641212de78c5924f1305e01bc7a8.patch
+    git reset
+    cd ${here}
+    cd ${ros2_src}/src/ros2/demos
+    git clean -f -d -x .
+    git checkout .
+    git apply ${patches}/demos_pendulum_control.patch
+    git reset
+    cd ${here}
 }
 
 build_ros2()
@@ -100,11 +119,33 @@ build_ros2()
     cd ..
 }
 
+setup_bison()
+{
+    rm -rf ${bison_src}
+    mkdir ${bison_src}
+    cd ${bison_src}
+    wget "https://ftp.gnu.org/gnu/bison/bison-3.7.6.tar.gz"
+    tar -xzvf bison-3.7.6.tar.gz
+    cd bison-3.7.6
+    ./configure --prefix=$(readlink -f ../root)
+    make -j$(nproc)
+    make install -j$(nproc)
+    cd ..
+    cd ..
+}
+
+activate_bision()
+{
+    export PATH=$(readlink -f ${bison_src}/root/bin):$PATH
+}
+
 clean_up
 setup_venv
 activate_venv
 setup_colcon
 activate_colcon
+setup_bison
+activate_bision
 setup_ros2
 patch_ros2
 build_ros2

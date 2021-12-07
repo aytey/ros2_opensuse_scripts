@@ -1,0 +1,34 @@
+diff --git a/pendulum_control/src/pendulum_demo.cpp b/pendulum_control/src/pendulum_demo.cpp
+index 4efbf7a..fa9c8e9 100644
+--- a/pendulum_control/src/pendulum_demo.cpp
++++ b/pendulum_control/src/pendulum_demo.cpp
+@@ -60,7 +60,7 @@ static void * testing_malloc(size_t size, const void * caller)
+   (void)caller;
+   // Set the malloc implementation to the default malloc hook so that we can call it implicitly
+   // to initialize a string, otherwise this function will loop infinitely.
+-  __malloc_hook = prev_malloc_hook;
++  // __malloc_hook = prev_malloc_hook;
+ 
+   if (running) {
+     fprintf(stderr, "Called malloc during realtime execution phase!\n");
+@@ -71,7 +71,7 @@ static void * testing_malloc(size_t size, const void * caller)
+   // Execute the requested malloc.
+   void * mem = malloc(size);
+   // Set the malloc hook back to this function, so that we can intercept future mallocs.
+-  __malloc_hook = testing_malloc;
++  // __malloc_hook = testing_malloc;
+   return mem;
+ }
+ 
+@@ -79,9 +79,9 @@ static void * testing_malloc(size_t size, const void * caller)
+ void init_malloc_hook()
+ {
+   // Store the default malloc.
+-  prev_malloc_hook = __malloc_hook;
++  // prev_malloc_hook = __malloc_hook;
+   // Set our custom malloc to the malloc hook.
+-  __malloc_hook = testing_malloc;
++  // __malloc_hook = testing_malloc;
+ }
+ #pragma GCC diagnostic pop
+ 

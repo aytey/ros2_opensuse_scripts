@@ -1,0 +1,12 @@
+diff --git a/include/rcppmath/rolling_mean_accumulator.hpp b/include/rcppmath/rolling_mean_accumulator.hpp
+index 89a057f..1bb33ca 100644
+--- a/include/rcppmath/rolling_mean_accumulator.hpp
++++ b/include/rcppmath/rolling_mean_accumulator.hpp
+@@ -21,6 +21,7 @@
+ 
+ #include <cassert>
+ #include <vector>
++#include <cstddef>
+ 
+ namespace rcppmath
+ {
