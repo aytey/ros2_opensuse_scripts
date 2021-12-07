@@ -30,7 +30,7 @@ setup_venv()
     pip install -U pip
     curl --output ${venv}/requirements.txt https://raw.githubusercontent.com/colcon/colcon.readthedocs.org/main/requirements.txt
     pip install -r ${venv}/requirements.txt
-    pip install -U argcomplete colcon-common-extensions flake8 flake8-blind-except flake8-builtins flake8-class-newline flake8-comprehensions flake8-deprecated flake8-docstrings flake8-import-order flake8-quotes importlib-metadata importlib-resources lark-parser pytest pytest-cov pytest-repeat pytest-rerunfailures pytest-runner setuptools vcstool
+    pip install -U argcomplete flake8 flake8-blind-except flake8-builtins flake8-class-newline flake8-comprehensions flake8-deprecated flake8-docstrings flake8-import-order flake8-quotes importlib-metadata importlib-resources lark-parser pytest pytest-cov pytest-repeat pytest-rerunfailures pytest-runner setuptools vcstool numpy
 }
 
 
@@ -66,12 +66,12 @@ setup_ros2()
 
 patch_ros2()
 {
-    here=$(readlink -f $(pwd))
+    here=$(readlink -f "$(pwd)")
     patches=$(readlink -f "patches")
     cd ${ros2_src}/src/ros2/yaml_cpp_vendor
     git clean -f -d -x .
     git checkout .
-    git apply ${patches}/yaml_cpp_vendor.patch
+    git apply "${patches}"/yaml_cpp_vendor.patch
     git reset
     cd ${here}
     cd ${ros2_src}/src/ros2/rcpputils
