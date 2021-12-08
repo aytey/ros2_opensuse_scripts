@@ -68,12 +68,6 @@ patch_ros2()
 {
     here=$(readlink -f "$(pwd)")
     patches=$(readlink -f "patches")
-    cd ${ros2_src}/src/ros2/yaml_cpp_vendor
-    git clean -f -d -x .
-    git checkout .
-    git apply "${patches}"/yaml_cpp_vendor.patch
-    git reset
-    cd ${here}
     cd ${ros2_src}/src/ros2/rcpputils
     git clean -f -d -x .
     git checkout .
