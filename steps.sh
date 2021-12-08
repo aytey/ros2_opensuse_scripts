@@ -13,6 +13,7 @@ clean_up()
     rm -rf ${venv}
     rm -rf ${colcon_src}
     rm -rf ${ros2_src}
+    rm -rf ${bison_src}
 }
 
 activate_venv()
