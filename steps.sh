@@ -59,7 +59,7 @@ setup_ros2()
     rm -rf ${ros2_src}
     mkdir ${ros2_src}
     cd ${ros2_src}
-    curl --output ros2.repos https://raw.githubusercontent.com/ros2/ros2/galactic/ros2.repos
+    curl --output ros2.repos https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos
     mkdir src
     vcs import src < ros2.repos
     cd ..
@@ -69,22 +69,30 @@ patch_ros2()
 {
     here=$(readlink -f "$(pwd)")
     patches=$(readlink -f "patches")
+    cd ${ros2_src}/src/ament/google_benchmark_vendor
+    # cp ${patches}/google_benchmark_vendor_benchmark_register.patch .
+    # git apply ${patches}/google_benchmark_vendor_cmakelists.patch
+    git reset
+    cd ${here}
+
     cd ${ros2_src}/src/ros2/rcpputils
     git clean -f -d -x .
     git checkout .
-    git apply ${patches}/ros2_rcpputils.patch
+    # git apply ${patches}/ros2_rcpputils.patch
     git reset
     cd ${here}
+
     cd ${ros2_src}/src/ros2/realtime_support
     git clean -f -d -x .
     git checkout .
-    git apply ${patches}/fa9a5545db8f641212de78c5924f1305e01bc7a8.patch
+    # git apply ${patches}/fa9a5545db8f641212de78c5924f1305e01bc7a8.patch
     git reset
     cd ${here}
+
     cd ${ros2_src}/src/ros2/demos
     git clean -f -d -x .
     git checkout .
-    git apply ${patches}/demos_pendulum_control.patch
+    # git apply ${patches}/demos_pendulum_control.patch
     git reset
     cd ${here}
 }
@@ -134,12 +142,12 @@ activate_bision()
     export PATH=$(readlink -f ${bison_src}/root/bin):$PATH
 }
 
-clean_up
-setup_venv
+# clean_up
+# setup_venv
 activate_venv
-setup_colcon
+# setup_colcon
 activate_colcon
-setup_bison
+# setup_bison
 activate_bision
 setup_ros2
 patch_ros2
