@@ -31,7 +31,7 @@ setup_venv()
     pip install -U pip
     curl --output ${venv}/requirements.txt https://raw.githubusercontent.com/colcon/colcon.readthedocs.org/main/requirements.txt
     pip install -r ${venv}/requirements.txt
-    pip install -U argcomplete flake8 flake8-blind-except flake8-builtins flake8-class-newline flake8-comprehensions flake8-deprecated flake8-docstrings flake8-import-order flake8-quotes importlib-metadata importlib-resources lark-parser pytest pytest-cov pytest-repeat pytest-rerunfailures pytest-runner setuptools vcstool numpy
+    pip install -U argcomplete flake8 flake8-blind-except flake8-builtins flake8-class-newline flake8-comprehensions flake8-deprecated flake8-docstrings flake8-import-order flake8-quotes importlib-metadata importlib-resources lark-parser pytest pytest-cov pytest-repeat pytest-rerunfailures pytest-runner setuptools vcstool numpy empy==3.3.4 pyros-genmsg setuptools
 }
 
 
@@ -149,8 +149,8 @@ activate_venv
 activate_colcon
 # setup_bison
 activate_bision
-setup_ros2
-patch_ros2
+# setup_ros2
+# patch_ros2
 build_ros2
 
 exit 0
